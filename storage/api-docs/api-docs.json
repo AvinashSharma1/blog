@@ -1,0 +1,1787 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Blog API Documentation",
+        "contact": {
+            "name": "Avinash Sharma",
+            "url": "https://www.blog.com"
+        },
+        "version": "1.0"
+    },
+    "basePath": "",
+    "paths": {
+        "/api/users/request": {
+            "get": {
+                "tags": [
+                    "Friend Module"
+                ],
+                "summary": "Get all friend request",
+                "description": "",
+                "operationId": "api.users.friends.index",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "parameters": [
+                    {
+                        "name": "from_date",
+                        "in": "query",
+                        "description": "From Date Format => (YYYY-MM-DD)",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "to_date",
+                        "in": "query",
+                        "description": "To Date Format => (YYYY-MM-DD)",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "Sort by field (`created_at`)",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "sort_type",
+                        "in": "query",
+                        "description": "ASC or DESC",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Page to view",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "records_per_page",
+                        "in": "query",
+                        "description": "Records to display per page",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "title": "response",
+                            "required": [
+                                "status",
+                                "success",
+                                "message",
+                                "data"
+                            ],
+                            "properties": {
+                                "status": {
+                                    "description": "Response code",
+                                    "type": "integer",
+                                    "format": "int64",
+                                    "default": "200"
+                                },
+                                "success": {
+                                    "description": "Is success",
+                                    "type": "boolean",
+                                    "default": "true"
+                                },
+                                "message": {
+                                    "description": "Success message",
+                                    "type": "string",
+                                    "default": "Success"
+                                },
+                                "data": {
+                                    "title": "Data",
+                                    "description": "Data response",
+                                    "properties": {
+                                        "pagination": {
+                                            "title": "Pagination",
+                                            "properties": {
+                                                "total_records": {
+                                                    "description": "Total number of records",
+                                                    "type": "integer",
+                                                    "format": "int64",
+                                                    "default": "38434"
+                                                },
+                                                "records_per_page": {
+                                                    "description": "Number of records to display per page",
+                                                    "type": "integer",
+                                                    "format": "int64",
+                                                    "default": "10"
+                                                },
+                                                "total_pages": {
+                                                    "description": "Total number of pages",
+                                                    "type": "integer",
+                                                    "format": "int64",
+                                                    "default": "3844"
+                                                },
+                                                "page": {
+                                                    "description": "Current page number",
+                                                    "type": "integer",
+                                                    "format": "int64",
+                                                    "default": "1"
+                                                },
+                                                "links": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "properties": {
+                                                            "self": {
+                                                                "description": "Total number of records",
+                                                                "type": "string",
+                                                                "default": "http://local.blog.api.com/api/users?&records_per_page=10&page=1"
+                                                            },
+                                                            "first": {
+                                                                "description": "Total number of records",
+                                                                "type": "string",
+                                                                "default": "http://local.blog.api.com/api/users?&records_per_page=10&page=1"
+                                                            },
+                                                            "last": {
+                                                                "description": "Total number of records",
+                                                                "type": "string",
+                                                                "default": "http://local.blog.api.com/api/users?&records_per_page=10&page=3844"
+                                                            },
+                                                            "next": {
+                                                                "description": "Total number of records",
+                                                                "type": "string",
+                                                                "default": "http://local.blog.api.com/api/users?&records_per_page=10&page=2"
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                "response": {
+                                                    "title": "Response",
+                                                    "type": "array",
+                                                    "items": {
+                                                        "properties": {
+                                                            "users_id": {
+                                                                "description": "users Id",
+                                                                "type": "integer",
+                                                                "default": "1"
+                                                            },
+                                                            "email": {
+                                                                "description": "Email Id",
+                                                                "type": "string",
+                                                                "default": "test+1@test.com"
+                                                            },
+                                                            "first_name": {
+                                                                "description": "First Name",
+                                                                "type": "string",
+                                                                "default": "test 1"
+                                                            },
+                                                            "last_name": {
+                                                                "description": "Last Name",
+                                                                "type": "string",
+                                                                "default": "test"
+                                                            },
+                                                            "status": {
+                                                                "description": "Status",
+                                                                "type": "integer",
+                                                                "default": "1"
+                                                            },
+                                                            "singup_status": {
+                                                                "description": "Singup status",
+                                                                "type": "integer",
+                                                                "default": "null"
+                                                            },
+                                                            "created_at": {
+                                                                "description": "Created Date",
+                                                                "type": "string",
+                                                                "default": "2017-03-08 10:59:11"
+                                                            },
+                                                            "updated_at": {
+                                                                "description": "Updated Date",
+                                                                "type": "string",
+                                                                "default": "2017-03-08 10:59:11"
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Friend Module"
+                ],
+                "summary": "Send friend request to user",
+                "description": "",
+                "operationId": "api.users.friends.store",
+                "produces": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "parameters": [
+                    {
+                        "name": "user_id",
+                        "in": "formData",
+                        "description": "User ID",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "title": "response",
+                            "required": [
+                                "status",
+                                "success",
+                                "message",
+                                "data"
+                            ],
+                            "properties": {
+                                "status": {
+                                    "description": "Response code",
+                                    "type": "integer",
+                                    "format": "int64",
+                                    "default": "200"
+                                },
+                                "success": {
+                                    "description": "Is success",
+                                    "type": "boolean",
+                                    "default": "true"
+                                },
+                                "message": {
+                                    "description": "Success message",
+                                    "type": "string",
+                                    "default": "Your friend request has been sent!"
+                                },
+                                "data": {
+                                    "title": "Data",
+                                    "description": "Data response",
+                                    "type": "array"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            }
+        },
+        "/api/users/{users}/accept/{user_id}": {
+            "put": {
+                "tags": [
+                    "Friend Module"
+                ],
+                "summary": "Friend Request Accept to user",
+                "description": "",
+                "operationId": "api.users.friends.update",
+                "produces": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "parameters": [
+                    {
+                        "name": "user_id",
+                        "in": "query",
+                        "description": "Sender Request User ID",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "title": "response",
+                            "required": [
+                                "status",
+                                "success",
+                                "message",
+                                "data"
+                            ],
+                            "properties": {
+                                "status": {
+                                    "description": "Response code",
+                                    "type": "integer",
+                                    "format": "int64",
+                                    "default": "200"
+                                },
+                                "success": {
+                                    "description": "Is success",
+                                    "type": "boolean",
+                                    "default": "true"
+                                },
+                                "message": {
+                                    "description": "Success message",
+                                    "type": "string",
+                                    "default": "Friend Request has been accepted by you!"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            }
+        },
+        "/api/users/mutual-friend-lists": {
+            "get": {
+                "tags": [
+                    "Friend Module"
+                ],
+                "summary": "Get mutual friend lists",
+                "description": "",
+                "operationId": "api.users.friends.index",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "parameters": [
+                    {
+                        "name": "user_id",
+                        "in": "query",
+                        "description": "Profile visitor User ID",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Page to view",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "records_per_page",
+                        "in": "query",
+                        "description": "Records to display per page",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "title": "response",
+                            "required": [
+                                "status",
+                                "success",
+                                "message",
+                                "data"
+                            ],
+                            "properties": {
+                                "status": {
+                                    "description": "Response code",
+                                    "type": "integer",
+                                    "format": "int64",
+                                    "default": "200"
+                                },
+                                "success": {
+                                    "description": "Is success",
+                                    "type": "boolean",
+                                    "default": "true"
+                                },
+                                "message": {
+                                    "description": "Success message",
+                                    "type": "string",
+                                    "default": "Success"
+                                },
+                                "data": {
+                                    "title": "Data",
+                                    "description": "Data response",
+                                    "properties": {
+                                        "pagination": {
+                                            "title": "Pagination",
+                                            "properties": {
+                                                "total_records": {
+                                                    "description": "Total number of records",
+                                                    "type": "integer",
+                                                    "format": "int64",
+                                                    "default": "38434"
+                                                },
+                                                "records_per_page": {
+                                                    "description": "Number of records to display per page",
+                                                    "type": "integer",
+                                                    "format": "int64",
+                                                    "default": "10"
+                                                },
+                                                "total_pages": {
+                                                    "description": "Total number of pages",
+                                                    "type": "integer",
+                                                    "format": "int64",
+                                                    "default": "3844"
+                                                },
+                                                "page": {
+                                                    "description": "Current page number",
+                                                    "type": "integer",
+                                                    "format": "int64",
+                                                    "default": "1"
+                                                },
+                                                "links": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "properties": {
+                                                            "self": {
+                                                                "description": "Total number of records",
+                                                                "type": "string",
+                                                                "default": "http://local.blog.api.com/api/users?&records_per_page=10&page=1"
+                                                            },
+                                                            "first": {
+                                                                "description": "Total number of records",
+                                                                "type": "string",
+                                                                "default": "http://local.blog.api.com/api/users?&records_per_page=10&page=1"
+                                                            },
+                                                            "last": {
+                                                                "description": "Total number of records",
+                                                                "type": "string",
+                                                                "default": "http://local.blog.api.com/api/users?&records_per_page=10&page=3844"
+                                                            },
+                                                            "next": {
+                                                                "description": "Total number of records",
+                                                                "type": "string",
+                                                                "default": "http://local.blog.api.com/api/users?&records_per_page=10&page=2"
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                "response": {
+                                                    "title": "Response",
+                                                    "type": "array",
+                                                    "items": {
+                                                        "properties": {
+                                                            "users_id": {
+                                                                "description": "users Id",
+                                                                "type": "integer",
+                                                                "default": "1"
+                                                            },
+                                                            "email": {
+                                                                "description": "Email Id",
+                                                                "type": "string",
+                                                                "default": "test+1@test.com"
+                                                            },
+                                                            "first_name": {
+                                                                "description": "First Name",
+                                                                "type": "string",
+                                                                "default": "test 1"
+                                                            },
+                                                            "last_name": {
+                                                                "description": "Last Name",
+                                                                "type": "string",
+                                                                "default": "test"
+                                                            },
+                                                            "status": {
+                                                                "description": "Status",
+                                                                "type": "integer",
+                                                                "default": "1"
+                                                            },
+                                                            "singup_status": {
+                                                                "description": "Singup status",
+                                                                "type": "integer",
+                                                                "default": "null"
+                                                            },
+                                                            "created_at": {
+                                                                "description": "Created Date",
+                                                                "type": "string",
+                                                                "default": "2017-03-08 10:59:11"
+                                                            },
+                                                            "updated_at": {
+                                                                "description": "Updated Date",
+                                                                "type": "string",
+                                                                "default": "2017-03-08 10:59:11"
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/registration": {
+            "post": {
+                "tags": [
+                    "Authentication Login and Registration Module"
+                ],
+                "summary": "Stores new User entry",
+                "description": "",
+                "operationId": "register.store",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "formData",
+                        "description": "Email",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "first_name",
+                        "in": "formData",
+                        "description": "First Name",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "last_name",
+                        "in": "formData",
+                        "description": "Last Name",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "password",
+                        "in": "formData",
+                        "description": "Password",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "g-recaptcha-response",
+                        "in": "formData",
+                        "description": "Captcha",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "user_verify_link",
+                        "in": "formData",
+                        "description": "User Verify Link",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "title": "response",
+                            "required": [
+                                "status",
+                                "success",
+                                "message",
+                                "data"
+                            ],
+                            "properties": {
+                                "status": {
+                                    "description": "Response code",
+                                    "type": "integer",
+                                    "format": "int64",
+                                    "default": "200"
+                                },
+                                "success": {
+                                    "description": "Is success",
+                                    "type": "boolean",
+                                    "default": "true"
+                                },
+                                "message": {
+                                    "description": "Success message",
+                                    "type": "string",
+                                    "default": "Success"
+                                },
+                                "data": {
+                                    "title": "Data",
+                                    "description": "Data response",
+                                    "properties": {
+                                        "user_id": {
+                                            "description": "User Id",
+                                            "type": "integer",
+                                            "default": "1"
+                                        },
+                                        "verification_id": {
+                                            "description": "Verification Id",
+                                            "type": "integer",
+                                            "default": "0"
+                                        },
+                                        "token": {
+                                            "description": "Token",
+                                            "type": "string",
+                                            "default": "OhlKm0rTYSgxLKmIttkHSZ9rFw7a21V6HwpvCRCs"
+                                        },
+                                        "user_verify_link": {
+                                            "description": "Verification Link",
+                                            "type": "string",
+                                            "default": "http://google.com/test.php"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            }
+        },
+        "/api/users": {
+            "get": {
+                "tags": [
+                    "User Module"
+                ],
+                "summary": "Get all users lists",
+                "description": "List of register users",
+                "operationId": "api.users.index",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "parameters": [
+                    {
+                        "name": "user_id",
+                        "in": "query",
+                        "description": "User ID",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "description": "User Email ID",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "first_name",
+                        "in": "query",
+                        "description": "First Name",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "last_name",
+                        "in": "query",
+                        "description": "Last Name",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "from_date",
+                        "in": "query",
+                        "description": "From Date Format => (YYYY-MM-DD)",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "to_date",
+                        "in": "query",
+                        "description": "To Date Format => (YYYY-MM-DD)",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "Sort by field (`created_at` | `first_name` | `last_name` | `email`)",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "sort_type",
+                        "in": "query",
+                        "description": "ASC or DESC",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Page to view",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "records_per_page",
+                        "in": "query",
+                        "description": "Records to display per page",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "title": "response",
+                            "required": [
+                                "status",
+                                "success",
+                                "message",
+                                "data"
+                            ],
+                            "properties": {
+                                "status": {
+                                    "description": "Response code",
+                                    "type": "integer",
+                                    "format": "int64",
+                                    "default": "200"
+                                },
+                                "success": {
+                                    "description": "Is success",
+                                    "type": "boolean",
+                                    "default": "true"
+                                },
+                                "message": {
+                                    "description": "Success message",
+                                    "type": "string",
+                                    "default": "Success"
+                                },
+                                "data": {
+                                    "title": "Data",
+                                    "description": "Data response",
+                                    "properties": {
+                                        "pagination": {
+                                            "title": "Pagination",
+                                            "properties": {
+                                                "total_records": {
+                                                    "description": "Total number of records",
+                                                    "type": "integer",
+                                                    "format": "int64",
+                                                    "default": "38434"
+                                                },
+                                                "records_per_page": {
+                                                    "description": "Number of records to display per page",
+                                                    "type": "integer",
+                                                    "format": "int64",
+                                                    "default": "10"
+                                                },
+                                                "total_pages": {
+                                                    "description": "Total number of pages",
+                                                    "type": "integer",
+                                                    "format": "int64",
+                                                    "default": "3844"
+                                                },
+                                                "page": {
+                                                    "description": "Current page number",
+                                                    "type": "integer",
+                                                    "format": "int64",
+                                                    "default": "1"
+                                                },
+                                                "links": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "properties": {
+                                                            "self": {
+                                                                "description": "Total number of records",
+                                                                "type": "string",
+                                                                "default": "http://local.blog.api.com/api/users?&records_per_page=10&page=1"
+                                                            },
+                                                            "first": {
+                                                                "description": "Total number of records",
+                                                                "type": "string",
+                                                                "default": "http://local.blog.api.com/api/users?&records_per_page=10&page=1"
+                                                            },
+                                                            "last": {
+                                                                "description": "Total number of records",
+                                                                "type": "string",
+                                                                "default": "http://local.blog.api.com/api/users?&records_per_page=10&page=3844"
+                                                            },
+                                                            "next": {
+                                                                "description": "Total number of records",
+                                                                "type": "string",
+                                                                "default": "http://local.blog.api.com/api/users?&records_per_page=10&page=2"
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/users/{user_id}/verification/{verification_id}": {
+            "put": {
+                "tags": [
+                    "Authentication Login and Registration Module"
+                ],
+                "summary": "Activate User",
+                "description": "",
+                "operationId": "api.users.verification.update",
+                "produces": [
+                    "application/json",
+                    "application/xml"
+                ],
+                "parameters": [
+                    {
+                        "name": "user_id",
+                        "in": "query",
+                        "description": "User Id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "verification_id",
+                        "in": "query",
+                        "description": "Verification Id",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "description": "Token",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "title": "response",
+                            "required": [
+                                "status",
+                                "success",
+                                "message",
+                                "data"
+                            ],
+                            "properties": {
+                                "status": {
+                                    "description": "Response code",
+                                    "type": "integer",
+                                    "format": "int64",
+                                    "default": "200"
+                                },
+                                "success": {
+                                    "description": "Is success",
+                                    "type": "boolean",
+                                    "default": "true"
+                                },
+                                "message": {
+                                    "description": "Success message",
+                                    "type": "string",
+                                    "default": "Success"
+                                },
+                                "data": {
+                                    "title": "Data",
+                                    "description": "Data response",
+                                    "properties": {
+                                        "User": {
+                                            "description": "User",
+                                            "properties": {
+                                                "id": {
+                                                    "description": "User id",
+                                                    "type": "integer",
+                                                    "default": "1"
+                                                },
+                                                "email": {
+                                                    "description": "email",
+                                                    "type": "string",
+                                                    "default": "test+1@test.com"
+                                                },
+                                                "first_name": {
+                                                    "description": "First Name",
+                                                    "type": "string",
+                                                    "default": "Tester"
+                                                },
+                                                "last_name": {
+                                                    "description": "Last Name",
+                                                    "type": "string",
+                                                    "default": "Last Name"
+                                                },
+                                                "is_active": {
+                                                    "description": "Is Active",
+                                                    "type": "integer",
+                                                    "default": "1"
+                                                },
+                                                "logins": {
+                                                    "description": "Login",
+                                                    "type": "integer",
+                                                    "default": "5"
+                                                },
+                                                "last_login": {
+                                                    "description": "Last login",
+                                                    "type": "string",
+                                                    "default": "2017-05-22 07:10:24"
+                                                },
+                                                "last_login_ip": {
+                                                    "description": "Last Login IP",
+                                                    "type": "string",
+                                                    "default": "10.0.181.19"
+                                                },
+                                                "login_attempts": {
+                                                    "description": "Login Attempts",
+                                                    "type": "integer",
+                                                    "default": "1"
+                                                },
+                                                "created_at": {
+                                                    "description": "Created At",
+                                                    "type": "string",
+                                                    "default": "2017-03-08 12:07:24"
+                                                },
+                                                "updated_at": {
+                                                    "description": "Updated At",
+                                                    "type": "string",
+                                                    "default": "2017-05-22 04:40:24"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
+                    }
+                }
+            }
+        },
+        "/oauth/access_token": {
+            "post": {
+                "tags": [
+                    "Authentication Login and Registration Module"
+                ],
+                "summary": "Do User Login and Generate API Access Token",
+                "description": "",
+                "operationId": "oauth.access_token",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/xml",
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "username",
+                        "in": "formData",
+                        "description": "User's email",
+                        "required": true,
+                        "type": "string",
+                        "default": "test+1@test.com"
+                    },
+                    {
+                        "name": "password",
+                        "in": "formData",
+                        "description": "Password",
+                        "required": true,
+                        "type": "string",
+                        "default": "password"
+                    },
+                    {
+                        "name": "client_id",
+                        "in": "formData",
+                        "description": "Clients ID",
+                        "required": true,
+                        "type": "string",
+                        "default": "f3d259ddd3ed8ff3843839b"
+                    },
+                    {
+                        "name": "client_secret",
+                        "in": "formData",
+                        "description": "Client Secret Key",
+                        "required": true,
+                        "type": "string",
+                        "default": "4c7f6f8fa93d59c45502c0ae8c4a95b"
+                    },
+                    {
+                        "name": "grant_type",
+                        "in": "formData",
+                        "description": "Grant type",
+                        "required": true,
+                        "type": "string",
+                        "default": "password"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "Unauthorized action."
+                    },
+                    "500": {
+                        "description": "Internal Server Error."
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Error": {
+            "required": [
+                "code",
+                "message"
+            ],
+            "properties": {
+                "code": {
+                    "description": "Class ApiController",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "message": {
+                    "description": "Class ApiController",
+                    "type": "string"
+                }
+            }
+        },
+        "ActionGroup": {
+            "required": [
+                "id",
+                "name",
+                "display_name",
+                "created_at",
+                "updated_at"
+            ],
+            "properties": {
+                "id": {
+                    "description": "ActionGroup ID",
+                    "type": "integer",
+                    "default": "1"
+                },
+                "name": {
+                    "description": "Unique name",
+                    "type": "string",
+                    "default": "user"
+                },
+                "display_name": {
+                    "description": "Display name",
+                    "type": "string",
+                    "default": "Users"
+                },
+                "created_at": {
+                    "description": "Date created (`YYYY-MM-DD H:i:s`)",
+                    "type": "string",
+                    "default": "2016-12-01 06:42:57"
+                },
+                "updated_at": {
+                    "description": "Date updated (`YYYY-MM-DD H:i:s`)",
+                    "type": "string",
+                    "default": "2016-12-01 06:42:57"
+                }
+            }
+        },
+        "AmountMismatchFundPost": {
+            "required": [
+                "id",
+                "transaction_date",
+                "transaction_time",
+                "process_code",
+                "card_no",
+                "diff_amount",
+                "debit_credit",
+                "trace_number_swt",
+                "approval_code",
+                "card_hash_id_fn",
+                "card_proxy_num",
+                "ref_hash_fn",
+                "arn",
+                "terminal_id",
+                "transaction_amount",
+                "transaction_currency",
+                "bill_amount",
+                "bill_currency",
+                "settlement_amount",
+                "settlement_currency",
+                "mcc",
+                "merchant_name",
+                "program_code",
+                "agent_type",
+                "recon_date",
+                "transaction_date_ist_swt",
+                "transaction_time_ist_swt",
+                "transaction_amount_swt",
+                "transaction_currency_swt",
+                "P0300_recon_file",
+                "unique_txn_ref_no",
+                "recon_logic",
+                "status",
+                "is_active",
+                "date_created"
+            ],
+            "properties": {
+                "id": {
+                    "description": "Record id",
+                    "type": "integer",
+                    "format": "int64",
+                    "default": "1"
+                },
+                "transaction_date": {
+                    "description": "Transaction Date `CURRENT_TIMESTAMP (YYYY-MM-DD)`",
+                    "type": "string",
+                    "format": "date",
+                    "default": "2016-01-28"
+                },
+                "process_code": {
+                    "description": "Process Code",
+                    "type": "string",
+                    "default": "200000"
+                },
+                "card_no": {
+                    "description": "Card Number",
+                    "type": "string",
+                    "default": "55776310XXXXXX6156"
+                },
+                "diff_amount": {
+                    "description": "Diff Amount",
+                    "type": "float",
+                    "default": "0.00"
+                },
+                "debit_credit": {
+                    "description": "Debit Or Credit",
+                    "type": "string",
+                    "default": "C"
+                },
+                "trace_number_swt": {
+                    "description": "Trace Number SWT",
+                    "type": "string",
+                    "default": ""
+                },
+                "approval_code": {
+                    "description": "Approval Code",
+                    "type": "string",
+                    "default": "94526"
+                },
+                "card_hash_id_fn": {
+                    "description": "Card Hash Id",
+                    "type": "string",
+                    "default": "01c190e2867860834b08e94e5efcd0af"
+                },
+                "card_proxy_num": {
+                    "description": "Card Proxy Number",
+                    "type": "string",
+                    "default": "3371734"
+                },
+                "ref_hash_fn": {
+                    "description": "Reference Hash",
+                    "type": "string",
+                    "default": ""
+                },
+                "arn": {
+                    "description": "ARN",
+                    "type": "string",
+                    "default": "85215226274639400000000"
+                },
+                "terminal_id": {
+                    "description": "Terminal ID",
+                    "type": "string",
+                    "default": "216889"
+                },
+                "transaction_amount": {
+                    "description": "Transaction Amount",
+                    "type": "float",
+                    "default": "1.00"
+                },
+                "transaction_currency": {
+                    "description": "Transaction Currency",
+                    "type": "string",
+                    "default": "356"
+                },
+                "bill_amount": {
+                    "description": "Bill Amount",
+                    "type": "float",
+                    "default": "92.00"
+                },
+                "bill_currency": {
+                    "description": "Bill Currency",
+                    "type": "string",
+                    "default": "356"
+                },
+                "settlement_amount": {
+                    "description": "Settlement Amount",
+                    "type": "float",
+                    "default": "45.12"
+                },
+                "settlement_currency": {
+                    "description": "Settlement Currency",
+                    "type": "string",
+                    "default": "356"
+                },
+                "merchant_id": {
+                    "description": "Merchant ID",
+                    "type": "string",
+                    "default": ""
+                },
+                "mcc": {
+                    "description": "MCC",
+                    "type": "string",
+                    "default": "5399"
+                },
+                "merchant_name": {
+                    "description": "Merchant Name",
+                    "type": "string",
+                    "default": "UBER INR\\1B 39 PARAGON PLAZA\\www.uber.com\\400070    INDIND"
+                },
+                "program_code": {
+                    "description": "Program Code",
+                    "type": "string",
+                    "default": "Freecharge"
+                },
+                "agent_type": {
+                    "description": "Agent Type",
+                    "type": "string",
+                    "default": "MASTER CARD"
+                },
+                "recon_date": {
+                    "description": "Recon Date `CURRENT_TIMESTAMP (YYYY-MM-DD HH:MM:SS)`",
+                    "type": "date",
+                    "format": "date",
+                    "default": "2016-01-28"
+                },
+                "transaction_date_ist_swt": {
+                    "description": "Transaction Date IST SWT `CURRENT_TIMESTAMP (YYYY-MM-DD HH:MM:SS)`",
+                    "type": "date",
+                    "format": "date",
+                    "default": "2016-01-28"
+                },
+                "transaction_amount_swt": {
+                    "description": "Transaction Amount SWT",
+                    "type": "float",
+                    "default": "45.00"
+                },
+                "transaction_currency_swt": {
+                    "description": "Transaction Currency SWT",
+                    "type": "string",
+                    "default": "356"
+                },
+                "P0300_recon_file": {
+                    "description": "P0300 Recon file ",
+                    "type": "string",
+                    "default": ""
+                },
+                "unique_txn_ref_no": {
+                    "description": "Unique transaction reference no.",
+                    "type": "string",
+                    "default": " 01c190e2867860834b08e94e5efcd0af "
+                },
+                "recon_logic": {
+                    "description": "Recon Logic",
+                    "type": "string",
+                    "default": "logic_here"
+                },
+                "status": {
+                    "description": "Status `(settled`,`unsettled)`",
+                    "type": "string",
+                    "default": ""
+                },
+                "is_active": {
+                    "description": "1-Active 0-not active",
+                    "type": "int",
+                    "format": "int64",
+                    "default": "0"
+                },
+                "date_created": {
+                    "description": "Date Created `CURRENT_TIMESTAMP (YYYY-MM-DD HH:MM:SS)`",
+                    "type": "date",
+                    "format": "date",
+                    "default": "2016-04-28 12:45:56"
+                }
+            }
+        },
+        "CreditPosting": {
+            "required": [
+                "id",
+                "transaction_date",
+                "transaction_time",
+                "process_code",
+                "card_no",
+                "diff_amount",
+                "debit_credit",
+                "trace_number_swt",
+                "approval_code",
+                "card_hash_id_fn",
+                "card_proxy_num",
+                "ref_hash_fn",
+                "arn",
+                "terminal_id",
+                "transaction_amount",
+                "transaction_currency",
+                "bill_amount",
+                "bill_currency",
+                "settlement_amount",
+                "settlement_currency",
+                "merchant_id",
+                "mcc",
+                "merchant_name",
+                "program_code",
+                "agent_type",
+                "recon_date",
+                "transaction_date_ist_swt",
+                "transaction_time_ist_swt",
+                "transaction_amount_swt",
+                "transaction_currency_swt",
+                "P0300_recon_file",
+                "unique_txn_ref_no",
+                "recon_logic",
+                "status",
+                "is_active",
+                "date_created"
+            ],
+            "properties": {
+                "id": {
+                    "description": "Record id",
+                    "type": "integer",
+                    "format": "int64",
+                    "default": "1"
+                },
+                "transaction_date": {
+                    "description": "Transaction Date `CURRENT_TIMESTAMP (YYYY-MM-DD)`",
+                    "type": "string",
+                    "format": "date",
+                    "default": "2016-01-28"
+                },
+                "process_code": {
+                    "description": "Process Code",
+                    "type": "string",
+                    "default": "200000"
+                },
+                "card_no": {
+                    "description": "Card Number",
+                    "type": "string",
+                    "default": "55776310XXXXXX6156"
+                },
+                "diff_amount": {
+                    "description": "Diff Amount",
+                    "type": "float",
+                    "default": "0.00"
+                },
+                "debit_credit": {
+                    "description": "Debit Or Credit",
+                    "type": "string",
+                    "default": "C"
+                },
+                "trace_number_swt": {
+                    "description": "Trace Number SWT",
+                    "type": "string",
+                    "default": ""
+                },
+                "approval_code": {
+                    "description": "Approval Code",
+                    "type": "string",
+                    "default": "94526"
+                },
+                "card_hash_id_fn": {
+                    "description": "Card Hash Id",
+                    "type": "string",
+                    "default": "01c190e2867860834b08e94e5efcd0af"
+                },
+                "card_proxy_num": {
+                    "description": "Card Proxy Number",
+                    "type": "string",
+                    "default": "3371734"
+                },
+                "ref_hash_fn": {
+                    "description": "Reference Hash",
+                    "type": "string",
+                    "default": ""
+                },
+                "arn": {
+                    "description": "ARN",
+                    "type": "string",
+                    "default": "85215226274639400000000"
+                },
+                "terminal_id": {
+                    "description": "Terminal ID",
+                    "type": "string",
+                    "default": "216889"
+                },
+                "transaction_amount": {
+                    "description": "Transaction Amount",
+                    "type": "float",
+                    "default": "1.00"
+                },
+                "transaction_currency": {
+                    "description": "Transaction Currency",
+                    "type": "string",
+                    "default": "356"
+                },
+                "bill_amount": {
+                    "description": "Bill Amount",
+                    "type": "float",
+                    "default": "92.00"
+                },
+                "bill_currency": {
+                    "description": "Bill Currency",
+                    "type": "string",
+                    "default": "356"
+                },
+                "settlement_amount": {
+                    "description": "Settlement Amount",
+                    "type": "float",
+                    "default": "45.12"
+                },
+                "settlement_currency": {
+                    "description": "Settlement Currency",
+                    "type": "string",
+                    "default": "356"
+                },
+                "merchant_id": {
+                    "description": "Merchant ID",
+                    "type": "string",
+                    "default": ""
+                },
+                "mcc": {
+                    "description": "MCC",
+                    "type": "string",
+                    "default": "5399"
+                },
+                "merchant_name": {
+                    "description": "Merchant Name",
+                    "type": "string",
+                    "default": "UBER INR\\1B 39 PARAGON PLAZA\\www.uber.com\\400070    INDIND"
+                },
+                "program_code": {
+                    "description": "Program Code",
+                    "type": "string",
+                    "default": "Freecharge"
+                },
+                "agent_type": {
+                    "description": "Agent Type",
+                    "type": "string",
+                    "default": "MASTER CARD"
+                },
+                "recon_date": {
+                    "description": "Recon Date `CURRENT_TIMESTAMP (YYYY-MM-DD HH:MM:SS)`",
+                    "type": "date",
+                    "format": "date",
+                    "default": "2016-01-28"
+                },
+                "transaction_date_ist_swt": {
+                    "description": "Transaction Date IST SWT `CURRENT_TIMESTAMP (YYYY-MM-DD HH:MM:SS)`",
+                    "type": "date",
+                    "format": "date",
+                    "default": "2016-01-28"
+                },
+                "transaction_amount_swt": {
+                    "description": "Transaction Amount SWT",
+                    "type": "float",
+                    "default": "45.00"
+                },
+                "transaction_currency_swt": {
+                    "description": "Transaction Currency SWT",
+                    "type": "string",
+                    "default": "356"
+                },
+                "P0300_recon_file": {
+                    "description": "P0300 Recon file ",
+                    "type": "string",
+                    "default": ""
+                },
+                "unique_txn_ref_no": {
+                    "description": "Unique transaction reference no.",
+                    "type": "string",
+                    "default": " 01c190e2867860834b08e94e5efcd0af "
+                },
+                "recon_logic": {
+                    "description": "Recon Logic",
+                    "type": "string",
+                    "default": "logic_here"
+                },
+                "status": {
+                    "description": "Status `(settled`,`unsettled)`",
+                    "type": "string",
+                    "default": ""
+                },
+                "is_active": {
+                    "description": "1-Active 0-not active",
+                    "type": "int",
+                    "format": "int64",
+                    "default": "0"
+                },
+                "date_created": {
+                    "description": "Date Created `CURRENT_TIMESTAMP (YYYY-MM-DD HH:MM:SS)`",
+                    "type": "date",
+                    "format": "date",
+                    "default": "2016-04-28 12:45:56"
+                }
+            }
+        },
+        "MismatchCreditPosting": {
+            "required": [
+                "id",
+                "transaction_date",
+                "transaction_time",
+                "process_code",
+                "card_no",
+                "diff_amount",
+                "debit_credit",
+                "trace_number_swt",
+                "approval_code",
+                "card_hash_id_fn",
+                "card_proxy_num",
+                "ref_hash_fn",
+                "arn",
+                "terminal_id",
+                "transaction_amount",
+                "transaction_currency",
+                "bill_amount",
+                "bill_currency",
+                "settlement_amount",
+                "settlement_currency",
+                "merchant_id",
+                "mcc",
+                "merchant_name",
+                "program_code",
+                "agent_type",
+                "recon_date",
+                "transaction_date_ist_swt",
+                "transaction_time_ist_swt",
+                "transaction_amount_swt",
+                "transaction_currency_swt",
+                "P0300_recon_file",
+                "unique_txn_ref_no",
+                "recon_logic",
+                "status",
+                "is_active",
+                "date_created"
+            ],
+            "properties": {
+                "id": {
+                    "description": "Record id",
+                    "type": "integer",
+                    "format": "int64",
+                    "default": "1"
+                },
+                "transaction_date": {
+                    "description": "Transaction Date `CURRENT_TIMESTAMP (YYYY-MM-DD)`",
+                    "type": "string",
+                    "format": "date",
+                    "default": "2016-01-28"
+                },
+                "process_code": {
+                    "description": "Process Code",
+                    "type": "string",
+                    "default": "200000"
+                },
+                "card_no": {
+                    "description": "Card Number",
+                    "type": "string",
+                    "default": "55776310XXXXXX6156"
+                },
+                "diff_amount": {
+                    "description": "Diff Amount",
+                    "type": "float",
+                    "default": "0.00"
+                },
+                "debit_credit": {
+                    "description": "Debit Or Credit",
+                    "type": "string",
+                    "default": "C"
+                },
+                "trace_number_swt": {
+                    "description": "Trace Number SWT",
+                    "type": "string",
+                    "default": ""
+                },
+                "approval_code": {
+                    "description": "Approval Code",
+                    "type": "string",
+                    "default": "94526"
+                },
+                "card_hash_id_fn": {
+                    "description": "Card Hash Id",
+                    "type": "string",
+                    "default": "01c190e2867860834b08e94e5efcd0af"
+                },
+                "card_proxy_num": {
+                    "description": "Card Proxy Number",
+                    "type": "string",
+                    "default": "3371734"
+                },
+                "ref_hash_fn": {
+                    "description": "Reference Hash",
+                    "type": "string",
+                    "default": ""
+                },
+                "arn": {
+                    "description": "ARN",
+                    "type": "string",
+                    "default": "85215226274639400000000"
+                },
+                "terminal_id": {
+                    "description": "Terminal ID",
+                    "type": "string",
+                    "default": "216889"
+                },
+                "transaction_amount": {
+                    "description": "Transaction Amount",
+                    "type": "float",
+                    "default": "1.00"
+                },
+                "transaction_currency": {
+                    "description": "Transaction Currency",
+                    "type": "string",
+                    "default": "356"
+                },
+                "bill_amount": {
+                    "description": "Bill Amount",
+                    "type": "float",
+                    "default": "92.00"
+                },
+                "bill_currency": {
+                    "description": "Bill Currency",
+                    "type": "string",
+                    "default": "356"
+                },
+                "settlement_amount": {
+                    "description": "Settlement Amount",
+                    "type": "float",
+                    "default": "45.12"
+                },
+                "settlement_currency": {
+                    "description": "Settlement Currency",
+                    "type": "string",
+                    "default": "356"
+                },
+                "merchant_id": {
+                    "description": "Merchant ID",
+                    "type": "string",
+                    "default": ""
+                },
+                "mcc": {
+                    "description": "MCC",
+                    "type": "string",
+                    "default": "5399"
+                },
+                "merchant_name": {
+                    "description": "Merchant Name",
+                    "type": "string",
+                    "default": "UBER INR\\1B 39 PARAGON PLAZA\\www.uber.com\\400070    INDIND"
+                },
+                "program_code": {
+                    "description": "Program Code",
+                    "type": "string",
+                    "default": "Freecharge"
+                },
+                "agent_type": {
+                    "description": "Agent Type",
+                    "type": "string",
+                    "default": "MASTER CARD"
+                },
+                "recon_date": {
+                    "description": "Recon Date `CURRENT_TIMESTAMP (YYYY-MM-DD HH:MM:SS)`",
+                    "type": "date",
+                    "format": "date",
+                    "default": "2016-01-28"
+                },
+                "transaction_date_ist_swt": {
+                    "description": "Transaction Date IST SWT `CURRENT_TIMESTAMP (YYYY-MM-DD HH:MM:SS)`",
+                    "type": "date",
+                    "format": "date",
+                    "default": "2016-01-28"
+                },
+                "transaction_amount_swt": {
+                    "description": "Transaction Amount SWT",
+                    "type": "float",
+                    "default": "45.00"
+                },
+                "transaction_currency_swt": {
+                    "description": "Transaction Currency SWT",
+                    "type": "string",
+                    "default": "356"
+                },
+                "P0300_recon_file": {
+                    "description": "P0300 Recon file ",
+                    "type": "string",
+                    "default": ""
+                },
+                "unique_txn_ref_no": {
+                    "description": "Unique transaction reference no.",
+                    "type": "string",
+                    "default": " 01c190e2867860834b08e94e5efcd0af "
+                },
+                "recon_logic": {
+                    "description": "Recon Logic",
+                    "type": "string",
+                    "default": "logic_here"
+                },
+                "status": {
+                    "description": "Status `(settled`,`unsettled)`",
+                    "type": "string",
+                    "default": ""
+                },
+                "is_active": {
+                    "description": "1-Active 0-not active",
+                    "type": "int",
+                    "format": "int64",
+                    "default": "0"
+                },
+                "date_created": {
+                    "description": "Date Created `CURRENT_TIMESTAMP (YYYY-MM-DD HH:MM:SS)`",
+                    "type": "date",
+                    "format": "date",
+                    "default": "2016-04-28 12:45:56"
+                }
+            }
+        }
+    },
+    "responses": {
+        "400": {
+            "description": "Bad Request"
+        },
+        "403": {
+            "description": "Forbidden"
+        },
+        "500": {
+            "description": "Internal Server Error"
+        }
+    }
+}

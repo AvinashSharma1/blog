@@ -1,0 +1,364 @@
+[2017-10-23 11:10:45] local.ERROR: exception 'InvalidArgumentException' with message 'Database [AD] not configured.' in /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Database/DatabaseManager.php:239
+Stack trace:
+#0 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Database/DatabaseManager.php(158): Illuminate\Database\DatabaseManager->getConfig('AD')
+#1 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Database/DatabaseManager.php(68): Illuminate\Database\DatabaseManager->makeConnection('AD')
+#2 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Database/DatabaseManager.php(317): Illuminate\Database\DatabaseManager->connection()
+#3 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(217): Illuminate\Database\DatabaseManager->__call('listen', Array)
+#4 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Support/Facades/Facade.php(217): Illuminate\Database\DatabaseManager->listen(Object(Closure))
+#5 /var/www/html/blog/app/Providers/AppServiceProvider.php(57): Illuminate\Support\Facades\Facade::__callStatic('listen', Array)
+#6 /var/www/html/blog/app/Providers/AppServiceProvider.php(57): Illuminate\Support\Facades\DB::listen(Object(Closure))
+#7 /var/www/html/blog/app/Providers/AppServiceProvider.php(21): App\Providers\AppServiceProvider->includeConsoleAndDBLogger()
+#8 [internal function]: App\Providers\AppServiceProvider->boot()
+#9 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Container/Container.php(507): call_user_func_array(Array, Array)
+#10 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(757): Illuminate\Container\Container->call(Array)
+#11 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(740): Illuminate\Foundation\Application->bootProvider(Object(App\Providers\AppServiceProvider))
+#12 [internal function]: Illuminate\Foundation\Application->Illuminate\Foundation\{closure}(Object(App\Providers\AppServiceProvider), 13)
+#13 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(741): array_walk(Array, Object(Closure))
+#14 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Foundation/Bootstrap/BootProviders.php(17): Illuminate\Foundation\Application->boot()
+#15 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Foundation/Application.php(203): Illuminate\Foundation\Bootstrap\BootProviders->bootstrap(Object(Illuminate\Foundation\Application))
+#16 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(232): Illuminate\Foundation\Application->bootstrapWith(Array)
+#17 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(127): Illuminate\Foundation\Http\Kernel->bootstrap()
+#18 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(99): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter(Object(Illuminate\Http\Request))
+#19 /var/www/html/blog/public/index.php(54): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
+#20 {main}  
+[2017-10-23 11:12:34] local.DEBUG: http://local.blog.api.com/registration  
+[2017-10-23 11:12:34] local.DEBUG: Query:   
+[2017-10-23 11:12:34] local.DEBUG: select * from `users` where `email` = ? and `is_active` = ? limit 1  
+[2017-10-23 11:12:34] local.DEBUG: Bindings:   
+[2017-10-23 11:12:34] local.DEBUG: array (
+  0 => 'test+1@test.com',
+  1 => 1,
+)  
+[2017-10-23 11:12:34] local.DEBUG: http://local.blog.api.com/registration  
+[2017-10-23 11:12:34] local.DEBUG: Query:   
+[2017-10-23 11:12:34] local.DEBUG: select * from `users` where `email` = ? and `is_active` != ? limit 1  
+[2017-10-23 11:12:34] local.DEBUG: Bindings:   
+[2017-10-23 11:12:34] local.DEBUG: array (
+  0 => 'test+1@test.com',
+  1 => -1,
+)  
+[2017-10-23 11:12:34] local.ERROR: exception 'PDOException' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'first_name' in 'field list'' in /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Database/Connection.php:457
+Stack trace:
+#0 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Database/Connection.php(457): PDO->prepare('insert into `us...')
+#1 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Database/Connection.php(722): Illuminate\Database\Connection->Illuminate\Database\{closure}(Object(Illuminate\Database\MySqlConnection), 'insert into `us...', Array)
+#2 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Database/Connection.php(685): Illuminate\Database\Connection->runQueryCallback('insert into `us...', Array, Object(Closure))
+#3 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Database/Connection.php(458): Illuminate\Database\Connection->run('insert into `us...', Array, Object(Closure))
+#4 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Database/Connection.php(414): Illuminate\Database\Connection->statement('insert into `us...', Array)
+#5 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Database/Query/Processors/Processor.php(32): Illuminate\Database\Connection->insert('insert into `us...', Array)
+#6 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(2107): Illuminate\Database\Query\Processors\Processor->processInsertGetId(Object(Illuminate\Database\Query\Builder), 'insert into `us...', Array, 'id')
+#7 [internal function]: Illuminate\Database\Query\Builder->insertGetId(Array, 'id')
+#8 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php(1423): call_user_func_array(Array, Array)
+#9 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(1628): Illuminate\Database\Eloquent\Builder->__call('insertGetId', Array)
+#10 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(1628): Illuminate\Database\Eloquent\Builder->insertGetId(Array, 'id')
+#11 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(1597): Illuminate\Database\Eloquent\Model->insertAndSetId(Object(Illuminate\Database\Eloquent\Builder), Array)
+#12 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(1488): Illuminate\Database\Eloquent\Model->performInsert(Object(Illuminate\Database\Eloquent\Builder), Array)
+#13 /var/www/html/blog/app/Models/User.php(161): Illuminate\Database\Eloquent\Model->save()
+#14 /var/www/html/blog/app/Http/Controllers/RegisterController.php(115): App\Models\User->createUser(Array)
+#15 [internal function]: App\Http\Controllers\RegisterController->store()
+#16 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(80): call_user_func_array(Array, Array)
+#17 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(146): Illuminate\Routing\Controller->callAction('store', Array)
+#18 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(94): Illuminate\Routing\ControllerDispatcher->call(Object(App\Http\Controllers\RegisterController), Object(Illuminate\Routing\Route), 'store')
+#19 [internal function]: Illuminate\Routing\ControllerDispatcher->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#20 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(52): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#21 [internal function]: Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#22 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(103): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#23 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(96): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#24 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(54): Illuminate\Routing\ControllerDispatcher->callWithinStack(Object(App\Http\Controllers\RegisterController), Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request), 'store')
+#25 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Routing/Route.php(174): Illuminate\Routing\ControllerDispatcher->dispatch(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request), '\\App\\Http\\Contr...', 'store')
+#26 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Routing/Route.php(140): Illuminate\Routing\Route->runController(Object(Illuminate\Http\Request))
+#27 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Routing/Router.php(724): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#28 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#29 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(52): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#30 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/View/Middleware/ShareErrorsFromSession.php(49): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#31 [internal function]: Illuminate\View\Middleware\ShareErrorsFromSession->handle(Object(Illuminate\Http\Request), Object(Closure))
+#32 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(136): call_user_func_array(Array, Array)
+#33 [internal function]: Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#34 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(32): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#35 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(64): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#36 [internal function]: Illuminate\Session\Middleware\StartSession->handle(Object(Illuminate\Http\Request), Object(Closure))
+#37 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(136): call_user_func_array(Array, Array)
+#38 [internal function]: Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#39 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(32): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#40 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/AddQueuedCookiesToResponse.php(37): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#41 [internal function]: Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse->handle(Object(Illuminate\Http\Request), Object(Closure))
+#42 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(136): call_user_func_array(Array, Array)
+#43 [internal function]: Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#44 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(32): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#45 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/EncryptCookies.php(59): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#46 [internal function]: Illuminate\Cookie\Middleware\EncryptCookies->handle(Object(Illuminate\Http\Request), Object(Closure))
+#47 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(136): call_user_func_array(Array, Array)
+#48 [internal function]: Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#49 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(32): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#50 [internal function]: Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#51 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(103): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#52 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Routing/Router.php(726): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#53 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Routing/Router.php(699): Illuminate\Routing\Router->runRouteWithinStack(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request))
+#54 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Routing/Router.php(675): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#55 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(246): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#56 [internal function]: Illuminate\Foundation\Http\Kernel->Illuminate\Foundation\Http\{closure}(Object(Illuminate\Http\Request))
+#57 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(52): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#58 /var/www/html/blog/app/Http/Middleware/XSSProtection.php(32): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#59 [internal function]: App\Http\Middleware\XSSProtection->handle(Object(Illuminate\Http\Request), Object(Closure))
+#60 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(136): call_user_func_array(Array, Array)
+#61 [internal function]: Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#62 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(32): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#63 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/CheckForMaintenanceMode.php(44): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#64 [internal function]: Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode->handle(Object(Illuminate\Http\Request), Object(Closure))
+#65 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(136): call_user_func_array(Array, Array)
+#66 [internal function]: Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#67 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(32): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#68 [internal function]: Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#69 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(103): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#70 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(132): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#71 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(99): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter(Object(Illuminate\Http\Request))
+#72 /var/www/html/blog/public/index.php(54): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
+#73 {main}
+
+Next exception 'Illuminate\Database\QueryException' with message 'SQLSTATE[42S22]: Column not found: 1054 Unknown column 'first_name' in 'field list' (SQL: insert into `users` (`email`, `first_name`, `last_name`, `password`, `is_active`, `updated_at`, `created_at`) values (test+1@test.com, Avi, Sharma, y$wJYkLk.DbkYLUX38vpgJfOJGbx89PI6HqMKMYgiWqzYhm7mq4SILm, 0, 2017-10-23 11:12:34, 2017-10-23 11:12:34))' in /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Database/Connection.php:729
+Stack trace:
+#0 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Database/Connection.php(685): Illuminate\Database\Connection->runQueryCallback('insert into `us...', Array, Object(Closure))
+#1 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Database/Connection.php(458): Illuminate\Database\Connection->run('insert into `us...', Array, Object(Closure))
+#2 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Database/Connection.php(414): Illuminate\Database\Connection->statement('insert into `us...', Array)
+#3 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Database/Query/Processors/Processor.php(32): Illuminate\Database\Connection->insert('insert into `us...', Array)
+#4 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Database/Query/Builder.php(2107): Illuminate\Database\Query\Processors\Processor->processInsertGetId(Object(Illuminate\Database\Query\Builder), 'insert into `us...', Array, 'id')
+#5 [internal function]: Illuminate\Database\Query\Builder->insertGetId(Array, 'id')
+#6 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Builder.php(1423): call_user_func_array(Array, Array)
+#7 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(1628): Illuminate\Database\Eloquent\Builder->__call('insertGetId', Array)
+#8 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(1628): Illuminate\Database\Eloquent\Builder->insertGetId(Array, 'id')
+#9 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(1597): Illuminate\Database\Eloquent\Model->insertAndSetId(Object(Illuminate\Database\Eloquent\Builder), Array)
+#10 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php(1488): Illuminate\Database\Eloquent\Model->performInsert(Object(Illuminate\Database\Eloquent\Builder), Array)
+#11 /var/www/html/blog/app/Models/User.php(161): Illuminate\Database\Eloquent\Model->save()
+#12 /var/www/html/blog/app/Http/Controllers/RegisterController.php(115): App\Models\User->createUser(Array)
+#13 [internal function]: App\Http\Controllers\RegisterController->store()
+#14 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Routing/Controller.php(80): call_user_func_array(Array, Array)
+#15 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(146): Illuminate\Routing\Controller->callAction('store', Array)
+#16 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(94): Illuminate\Routing\ControllerDispatcher->call(Object(App\Http\Controllers\RegisterController), Object(Illuminate\Routing\Route), 'store')
+#17 [internal function]: Illuminate\Routing\ControllerDispatcher->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#18 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(52): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#19 [internal function]: Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#20 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(103): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#21 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(96): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#22 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Routing/ControllerDispatcher.php(54): Illuminate\Routing\ControllerDispatcher->callWithinStack(Object(App\Http\Controllers\RegisterController), Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request), 'store')
+#23 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Routing/Route.php(174): Illuminate\Routing\ControllerDispatcher->dispatch(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request), '\\App\\Http\\Contr...', 'store')
+#24 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Routing/Route.php(140): Illuminate\Routing\Route->runController(Object(Illuminate\Http\Request))
+#25 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Routing/Router.php(724): Illuminate\Routing\Route->run(Object(Illuminate\Http\Request))
+#26 [internal function]: Illuminate\Routing\Router->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#27 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(52): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#28 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/View/Middleware/ShareErrorsFromSession.php(49): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#29 [internal function]: Illuminate\View\Middleware\ShareErrorsFromSession->handle(Object(Illuminate\Http\Request), Object(Closure))
+#30 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(136): call_user_func_array(Array, Array)
+#31 [internal function]: Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#32 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(32): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#33 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Session/Middleware/StartSession.php(64): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#34 [internal function]: Illuminate\Session\Middleware\StartSession->handle(Object(Illuminate\Http\Request), Object(Closure))
+#35 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(136): call_user_func_array(Array, Array)
+#36 [internal function]: Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#37 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(32): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#38 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/AddQueuedCookiesToResponse.php(37): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#39 [internal function]: Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse->handle(Object(Illuminate\Http\Request), Object(Closure))
+#40 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(136): call_user_func_array(Array, Array)
+#41 [internal function]: Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#42 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(32): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#43 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Cookie/Middleware/EncryptCookies.php(59): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#44 [internal function]: Illuminate\Cookie\Middleware\EncryptCookies->handle(Object(Illuminate\Http\Request), Object(Closure))
+#45 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(136): call_user_func_array(Array, Array)
+#46 [internal function]: Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#47 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(32): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#48 [internal function]: Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#49 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(103): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#50 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Routing/Router.php(726): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#51 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Routing/Router.php(699): Illuminate\Routing\Router->runRouteWithinStack(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request))
+#52 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Routing/Router.php(675): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#53 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(246): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#54 [internal function]: Illuminate\Foundation\Http\Kernel->Illuminate\Foundation\Http\{closure}(Object(Illuminate\Http\Request))
+#55 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(52): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#56 /var/www/html/blog/app/Http/Middleware/XSSProtection.php(32): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#57 [internal function]: App\Http\Middleware\XSSProtection->handle(Object(Illuminate\Http\Request), Object(Closure))
+#58 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(136): call_user_func_array(Array, Array)
+#59 [internal function]: Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#60 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(32): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#61 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Foundation/Http/Middleware/CheckForMaintenanceMode.php(44): Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#62 [internal function]: Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode->handle(Object(Illuminate\Http\Request), Object(Closure))
+#63 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(136): call_user_func_array(Array, Array)
+#64 [internal function]: Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#65 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Routing/Pipeline.php(32): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#66 [internal function]: Illuminate\Routing\Pipeline->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#67 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Pipeline/Pipeline.php(103): call_user_func(Object(Closure), Object(Illuminate\Http\Request))
+#68 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(132): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#69 /var/www/html/blog/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php(99): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter(Object(Illuminate\Http\Request))
+#70 /var/www/html/blog/public/index.php(54): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
+#71 {main}  
+[2017-10-23 11:14:52] local.DEBUG: http://local.blog.api.com/registration  
+[2017-10-23 11:14:52] local.DEBUG: Query:   
+[2017-10-23 11:14:52] local.DEBUG: select * from `users` where `email` = ? and `is_active` = ? limit 1  
+[2017-10-23 11:14:52] local.DEBUG: Bindings:   
+[2017-10-23 11:14:52] local.DEBUG: array (
+  0 => 'test+1@test.com',
+  1 => 1,
+)  
+[2017-10-23 11:15:01] local.DEBUG: http://local.blog.api.com/registration  
+[2017-10-23 11:15:01] local.DEBUG: Query:   
+[2017-10-23 11:15:01] local.DEBUG: select * from `users` where `email` = ? and `is_active` = ? limit 1  
+[2017-10-23 11:15:01] local.DEBUG: Bindings:   
+[2017-10-23 11:15:01] local.DEBUG: array (
+  0 => 'test+7@test.com',
+  1 => 1,
+)  
+[2017-10-23 11:15:01] local.DEBUG: http://local.blog.api.com/registration  
+[2017-10-23 11:15:01] local.DEBUG: Query:   
+[2017-10-23 11:15:01] local.DEBUG: select * from `users` where `email` = ? and `is_active` != ? limit 1  
+[2017-10-23 11:15:01] local.DEBUG: Bindings:   
+[2017-10-23 11:15:01] local.DEBUG: array (
+  0 => 'test+7@test.com',
+  1 => -1,
+)  
+[2017-10-23 11:15:01] local.DEBUG: http://local.blog.api.com/registration  
+[2017-10-23 11:15:01] local.DEBUG: Query:   
+[2017-10-23 11:15:01] local.DEBUG: insert into `users` (`email`, `first_name`, `last_name`, `password`, `is_active`, `updated_at`, `created_at`) values (?, ?, ?, ?, ?, ?, ?)  
+[2017-10-23 11:15:01] local.DEBUG: Bindings:   
+[2017-10-23 11:15:01] local.DEBUG: array (
+  0 => 'test+7@test.com',
+  1 => 'Avi',
+  2 => 'Sharma',
+  3 => '$2y$10$rQcilzyIl.F4UmhEFBWNr.m0Dy7M2QFirWXKF3RqAOvzP/sizhPSu',
+  4 => 0,
+  5 => '2017-10-23 11:15:01',
+  6 => '2017-10-23 11:15:01',
+)  
+[2017-10-23 11:15:01] local.DEBUG: http://local.blog.api.com/registration  
+[2017-10-23 11:15:01] local.DEBUG: Query:   
+[2017-10-23 11:15:01] local.DEBUG: insert into `admin_tokens` (`admin_id`, `token`, `type`, `is_active`, `updated_at`, `created_at`) values (?, ?, ?, ?, ?, ?)  
+[2017-10-23 11:15:01] local.DEBUG: Bindings:   
+[2017-10-23 11:15:01] local.DEBUG: array (
+  0 => 9,
+  1 => 'ALnMlhhHRiFPvquUBv6BmGGPUL56ly8FUxjrHJDf',
+  2 => 'admin_creation',
+  3 => 1,
+  4 => '2017-10-23 11:15:01',
+  5 => '2017-10-23 11:15:01',
+)  
+[2017-10-23 11:15:17] local.DEBUG: http://local.blog.api.com/api/users/%7Buser_id%7D/verification/%7Bverification_id%7D  
+[2017-10-23 11:15:17] local.DEBUG: Query:   
+[2017-10-23 11:15:17] local.DEBUG: select * from `admin_tokens` where `token` = ? and `type` = ? and `is_active` = ? limit 1  
+[2017-10-23 11:15:17] local.DEBUG: Bindings:   
+[2017-10-23 11:15:17] local.DEBUG: array (
+  0 => 'ALnMlhhHRiFPvquUBv6BmGGPUL56ly8FUxjrHJDf',
+  1 => 'admin_creation',
+  2 => 1,
+)  
+[2017-10-23 11:15:17] local.DEBUG: http://local.blog.api.com/api/users/%7Buser_id%7D/verification/%7Bverification_id%7D  
+[2017-10-23 11:15:17] local.DEBUG: Query:   
+[2017-10-23 11:15:17] local.DEBUG: select * from `admin_tokens` where `admin_tokens`.`id` = ? limit 1  
+[2017-10-23 11:15:17] local.DEBUG: Bindings:   
+[2017-10-23 11:15:17] local.DEBUG: array (
+  0 => 6,
+)  
+[2017-10-23 11:15:17] local.DEBUG: http://local.blog.api.com/api/users/%7Buser_id%7D/verification/%7Bverification_id%7D  
+[2017-10-23 11:15:17] local.DEBUG: Query:   
+[2017-10-23 11:15:17] local.DEBUG: update `admin_tokens` set `is_active` = ?, `updated_at` = ? where `id` = ?  
+[2017-10-23 11:15:17] local.DEBUG: Bindings:   
+[2017-10-23 11:15:17] local.DEBUG: array (
+  0 => 0,
+  1 => '2017-10-23 11:15:17',
+  2 => 6,
+)  
+[2017-10-23 11:15:17] local.DEBUG: http://local.blog.api.com/api/users/%7Buser_id%7D/verification/%7Bverification_id%7D  
+[2017-10-23 11:15:17] local.DEBUG: Query:   
+[2017-10-23 11:15:17] local.DEBUG: select * from `users` where `users`.`id` = ? limit 1  
+[2017-10-23 11:15:17] local.DEBUG: Bindings:   
+[2017-10-23 11:15:17] local.DEBUG: array (
+  0 => 9,
+)  
+[2017-10-23 11:15:17] local.DEBUG: http://local.blog.api.com/api/users/%7Buser_id%7D/verification/%7Bverification_id%7D  
+[2017-10-23 11:15:17] local.DEBUG: Query:   
+[2017-10-23 11:15:17] local.DEBUG: update `users` set `is_active` = ?, `updated_at` = ? where `id` = ?  
+[2017-10-23 11:15:17] local.DEBUG: Bindings:   
+[2017-10-23 11:15:17] local.DEBUG: array (
+  0 => 1,
+  1 => '2017-10-23 11:15:17',
+  2 => 9,
+)  
+[2017-10-23 11:15:31] local.DEBUG: http://local.blog.api.com/oauth/access_token  
+[2017-10-23 11:15:31] local.DEBUG: Query:   
+[2017-10-23 11:15:31] local.DEBUG: select `oauth_clients`.`id` as `id`, `oauth_clients`.`secret` as `secret`, `oauth_clients`.`name` as `name` from `oauth_clients` where `oauth_clients`.`id` = ? and `oauth_clients`.`secret` = ? limit 1  
+[2017-10-23 11:15:31] local.DEBUG: Bindings:   
+[2017-10-23 11:15:31] local.DEBUG: array (
+  0 => 'f3d259ddd3ed8ff3843839b',
+  1 => '4c7f6f8fa93d59c45502c0ae8c4a95b',
+)  
+[2017-10-23 11:15:31] local.DEBUG: http://local.blog.api.com/oauth/access_token  
+[2017-10-23 11:15:31] local.DEBUG: Query:   
+[2017-10-23 11:15:31] local.DEBUG: select * from `users` where `email` = ? and `is_active` = ? limit 1  
+[2017-10-23 11:15:31] local.DEBUG: Bindings:   
+[2017-10-23 11:15:31] local.DEBUG: array (
+  0 => 'test+7@test.com',
+  1 => 1,
+)  
+[2017-10-23 11:15:31] local.DEBUG: http://local.blog.api.com/oauth/access_token  
+[2017-10-23 11:15:31] local.DEBUG: Query:   
+[2017-10-23 11:15:31] local.DEBUG: update `users` set `logins` = ?, `last_login` = ?, `last_login_ip` = ?, `login_attempts` = ?, `updated_at` = ? where `id` = ?  
+[2017-10-23 11:15:31] local.DEBUG: Bindings:   
+[2017-10-23 11:15:31] local.DEBUG: array (
+  0 => 1,
+  1 => '2017-10-23 11:15:31',
+  2 => '127.0.0.1',
+  3 => 1,
+  4 => '2017-10-23 11:15:31',
+  5 => 9,
+)  
+[2017-10-23 11:15:31] local.DEBUG: http://local.blog.api.com/oauth/access_token  
+[2017-10-23 11:15:31] local.DEBUG: Query:   
+[2017-10-23 11:15:31] local.DEBUG: select `oauth_scopes`.* from `oauth_session_scopes` inner join `oauth_scopes` on `oauth_session_scopes`.`scope_id` = `oauth_scopes`.`id` where `oauth_session_scopes`.`session_id` is null  
+[2017-10-23 11:15:31] local.DEBUG: Bindings:   
+[2017-10-23 11:15:31] local.DEBUG: array (
+)  
+[2017-10-23 11:15:31] local.DEBUG: http://local.blog.api.com/oauth/access_token  
+[2017-10-23 11:15:31] local.DEBUG: Query:   
+[2017-10-23 11:15:31] local.DEBUG: insert into `oauth_sessions` (`client_id`, `owner_type`, `owner_id`, `client_redirect_uri`, `created_at`, `updated_at`) values (?, ?, ?, ?, ?, ?)  
+[2017-10-23 11:15:31] local.DEBUG: Bindings:   
+[2017-10-23 11:15:31] local.DEBUG: array (
+  0 => 'f3d259ddd3ed8ff3843839b',
+  1 => 'user',
+  2 => 9,
+  3 => NULL,
+  4 => 
+  Carbon\Carbon::__set_state(array(
+     'date' => '2017-10-23 11:15:31.000000',
+     'timezone_type' => 3,
+     'timezone' => 'UTC',
+  )),
+  5 => 
+  Carbon\Carbon::__set_state(array(
+     'date' => '2017-10-23 11:15:31.000000',
+     'timezone_type' => 3,
+     'timezone' => 'UTC',
+  )),
+)  
+[2017-10-23 11:15:31] local.DEBUG: http://local.blog.api.com/oauth/access_token  
+[2017-10-23 11:15:31] local.DEBUG: Query:   
+[2017-10-23 11:15:31] local.DEBUG: insert into `oauth_access_tokens` (`id`, `expire_time`, `session_id`, `created_at`, `updated_at`) values (?, ?, ?, ?, ?)  
+[2017-10-23 11:15:31] local.DEBUG: Bindings:   
+[2017-10-23 11:15:31] local.DEBUG: array (
+  0 => '3HpHWP9cjT2747GfhPLo58tknRHaTOAuLLF3mAMX',
+  1 => 1508760931,
+  2 => 36,
+  3 => 
+  Carbon\Carbon::__set_state(array(
+     'date' => '2017-10-23 11:15:31.000000',
+     'timezone_type' => 3,
+     'timezone' => 'UTC',
+  )),
+  4 => 
+  Carbon\Carbon::__set_state(array(
+     'date' => '2017-10-23 11:15:31.000000',
+     'timezone_type' => 3,
+     'timezone' => 'UTC',
+  )),
+)  
+[2017-10-23 11:15:31] local.DEBUG: http://local.blog.api.com/oauth/access_token  
+[2017-10-23 11:15:31] local.DEBUG: Query:   
+[2017-10-23 11:15:31] local.DEBUG: select `oauth_scopes`.* from `oauth_access_token_scopes` inner join `oauth_scopes` on `oauth_access_token_scopes`.`scope_id` = `oauth_scopes`.`id` where `oauth_access_token_scopes`.`access_token_id` = ?  
+[2017-10-23 11:15:31] local.DEBUG: Bindings:   
+[2017-10-23 11:15:31] local.DEBUG: array (
+  0 => '3HpHWP9cjT2747GfhPLo58tknRHaTOAuLLF3mAMX',
+)  
