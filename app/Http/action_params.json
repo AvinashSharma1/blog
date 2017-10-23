@@ -1,0 +1,66 @@
+{
+    "users":{
+        "GET":{
+            "sort":{
+                "created_at":"created_at",
+                "first_name":"first_name",
+                "last_name":"last_name",
+                "email":"email"
+            },
+            "search_params":{
+                "user_id":"user_id",
+                "email":"email",
+                "first_name":"first_name",
+                "last_name":"last_name",
+                "from_date":"from_date",
+                "to_date":"to_date",
+                "sort_by":"sort_by",
+                "sort_type":"sort_type",
+                "page":"page",
+                "records_per_page":"records_per_page"
+            }
+        }
+    },
+    "users/request": {
+      "GET": {
+        "sort": {
+          "created_at": "created_at"
+        },
+        "search_params": {
+          "request_receiver": "request_receiver",
+          "status": "status",
+          "from_date": "from_date",
+          "to_date": "to_date",
+          "sort_by": "sort_by",
+          "sort_type": "sort_type",
+          "page": "page",
+          "records_per_page": "records_per_page"
+        }
+      },
+      "POST": {
+        "search_params": {
+          "user_id": "user_id"
+        }
+      }
+    },
+    "users/{users}/accept/{user_id}": {
+      "PUT": {
+        "search_params": {
+          "user_id":"user_id"
+        }
+      }
+    },
+    "users/mutual-friend-lists": {
+      "GET": {
+        "sort": {
+          "created_at": "created_at"
+        },
+        "search_params": {
+          "user_id": "user_id",
+          "page": "page",
+          "records_per_page": "records_per_page"
+        }
+      }
+    }
+
+}
